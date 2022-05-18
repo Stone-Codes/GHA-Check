@@ -2,12 +2,8 @@ name: Docker image building
 
 on:
   push:
-    branches:
-      - main
-      - develop
-      - feature/**
-      - story/**
-      - hotfix/**
+    tags:
+      - '*'
   workflow_dispatch:
 
 jobs:
