@@ -1,0 +1,31 @@
+name: Docker image building
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+      - feature/**
+      - story/**
+      - hotfix/**
+  workflow_dispatch:
+
+jobs:
+
+ 
+  building:
+    name: Docker building
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check Out Repo
+        uses: actions/checkout@v3
+
+      - name: Extract tag name
+        shell: bash
+        run: echo "##[set-output name=tag;]$(echo ${GITHUB_REF#refs/heads/} | tr / _)" # Replaces / with _ in branch name, which spinnaker will also do
+        id: extract_tag
+      
+      - name: Echo tag
+        shell: bash
+        run: echo "${GITHUB_REF#refs/heads/}""
