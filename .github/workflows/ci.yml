@@ -24,7 +24,7 @@ jobs:
       
       - name: Echo tag
         shell: bash
-        run: echo "${GITHUB_REF#refs/heads/}"
+        run: echo "${GITHUB_REF}"
 
       - name: Echo base
         shell: bash
