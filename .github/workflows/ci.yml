@@ -25,7 +25,7 @@ jobs:
         id: publish
         run: | 
           echo "link=thisisthelink" >> $GITHUB_OUTPUT
-          echo "logs=thisarelogs" >> $GITHUB_OUTPU
+          echo "logs=thisarelogs" >> $GITHUB_OUTPUT
       
       - name: Echo link
         run: echo ${{ steps.publish.outputs.link }}
