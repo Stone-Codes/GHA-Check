@@ -15,11 +15,19 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+     outputs:
+      link: ${{ steps.publish.outputs.link }}
+      logs: ${{ steps.publish.outputs.logs }}
       - name: Check Out Repo
         uses: actions/checkout@v3
 
-      - name: Extract tag name
-        run: echo "test=whatever" >> $GITHUB_OUTPUT
+      - name: Link
+        id: publish
+        run: | 
+          echo "link=thisisthelink" >> $GITHUB_OUTPUT
+          echo "logs=thisarelogs" >> $GITHUB_OUTPU
       
-      - name: Echo output
-        run: echo $GITHUB_OUTPUT
+      - name: Echo link
+        run: echo ${{ step.publish.outputs.link }}
+      - name: Echo logs
+        run: echo ${{ step.publish.outputs.logs }}
