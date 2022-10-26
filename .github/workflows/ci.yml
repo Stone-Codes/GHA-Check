@@ -15,9 +15,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-     outputs:
-      link: ${{ steps.publish.outputs.link }}
-      logs: ${{ steps.publish.outputs.logs }}
+      outputs:
+        link: ${{ steps.publish.outputs.link }}
+        logs: ${{ steps.publish.outputs.logs }}
       - name: Check Out Repo
         uses: actions/checkout@v3
 
