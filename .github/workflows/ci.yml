@@ -28,6 +28,6 @@ jobs:
           echo "logs=thisarelogs" >> $GITHUB_OUTPU
       
       - name: Echo link
-        run: echo ${{ step.publish.outputs.link }}
+        run: echo ${{ steps.publish.outputs.link }}
       - name: Echo logs
-        run: echo ${{ step.publish.outputs.logs }}
+        run: echo ${{ steps.publish.outputs.logs }}
