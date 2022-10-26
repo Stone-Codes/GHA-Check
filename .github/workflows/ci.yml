@@ -7,9 +7,10 @@ on:
   workflow_dispatch:
 
 jobs:
-
- 
   building:
+    strategy:
+      matrix:
+        version: [whatever, otherstuff]
     name: Docker building
     runs-on: ubuntu-latest
 
@@ -18,14 +19,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Extract tag name
-        shell: bash
-        run: echo "##[set-output name=tag;]$(echo ${GITHUB_REF#refs/heads/} | tr / _)" # Replaces / with _ in branch name, which spinnaker will also do
-        id: extract_tag
+        run: echo "test={{version}}" >> $GITHUB_OUTPUT
       
-      - name: Echo tag
-        shell: bash
-        run: echo "${GITHUB_REF##*/}"
-
-      - name: Echo base
-        shell: bash
-        run: echo "${GITHUB_BASE_REF}"
+      - name: Echo output
+        run: echo $GITHUB_OUTPUT
