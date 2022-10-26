@@ -14,10 +14,10 @@ jobs:
     name: Docker building
     runs-on: ubuntu-latest
 
+    outputs:
+      link: ${{ steps.publish.outputs.link }}
+      logs: ${{ steps.publish.outputs.logs }}
     steps:
-      outputs:
-        link: ${{ steps.publish.outputs.link }}
-        logs: ${{ steps.publish.outputs.logs }}
       - name: Check Out Repo
         uses: actions/checkout@v3
 
